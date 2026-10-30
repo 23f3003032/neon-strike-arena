@@ -1,0 +1,4 @@
+node_modules/
+public/*.before-pwa
+.DS_Store
+.env
