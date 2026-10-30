@@ -1,4 +1,4 @@
-const CACHE_NAME = "neon-strike-pwa-v1";
+const CACHE_NAME = "neon-strike-pwa-v2";
 const APP_FILES = [
   "/", "/index.html", "/style.css", "/game.js", "/manifest.json",
   "/icons/icon-192.png", "/icons/icon-512.png", "/icons/icon-180.png"
