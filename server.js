@@ -65,6 +65,15 @@ function leaveRoom(socket) {
 
 io.on("connection", socket => {
   socket.emit("welcome", {id:socket.id, arena:ARENA});
+  socket.on("changeName", ({name}={}, ack=()=>{}) => {
+    const room = rooms.get(socket.data.room);
+    const player = room?.players.get(socket.id);
+    if (!player) return ack?.({ok:false,error:"Join a room first."});
+    player.name = safeName(name);
+    broadcast(room);
+    ack?.({ok:true,name:player.name});
+  });
+
   socket.on("createRoom", ({name}={}, ack=()=>{}) => {
     leaveRoom(socket);
     let code; do { code=randCode(); } while(rooms.has(code));
@@ -88,6 +97,7 @@ io.on("connection", socket => {
   socket.on("input", input=>{ const room=rooms.get(socket.data.room); const p=room?.players.get(socket.id); if(!p||room.phase!=="playing"||!p.alive)return; p.input={x:clamp(Number(input?.x)||0,-1,1),y:clamp(Number(input?.y)||0,-1,1),aimX:clamp(Number(input?.aimX)||0,0,ARENA.w),aimY:clamp(Number(input?.aimY)||0,0,ARENA.h),fire:!!input?.fire}; });
   socket.on("useAbility",()=>{const room=rooms.get(socket.data.room);const p=room?.players.get(socket.id);if(!p||room.phase!=="playing"||!p.alive)return;if(p.abilityReady>Date.now())return;p.shield=2200;p.abilityReady=Date.now()+12000;socket.emit("toast","PHASE SHIELD ACTIVATED");});
   socket.on("playAgain",()=>{const room=rooms.get(socket.data.room);if(!room||room.phase!=="results"||room.hostId!==socket.id)return;for(const p of room.players.values()){p.score=0;p.kills=0;}startRound(room);broadcast(room);});
+  socket.on("leaveRoom",()=>leaveRoom(socket));
   socket.on("disconnect",()=>leaveRoom(socket));
 });
 
