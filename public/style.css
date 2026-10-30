@@ -293,3 +293,182 @@ button, input { touch-action: manipulation; }
   }
 }
 
+
+/* NEON STRIKE - Landscape mobile gameplay layout */
+@media screen and (max-width: 760px) and (orientation: landscape) {
+
+  #game:not(.hidden) {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    max-height: 100dvh !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: hidden !important;
+    background: #060914 !important;
+  }
+
+  /* Compact match header */
+  #game .game-top {
+    flex: 0 0 42px !important;
+    height: 42px !important;
+    min-height: 42px !important;
+    margin: 0 !important;
+    padding: 3px 10px !important;
+    gap: 8px !important;
+    background: #080e1c !important;
+    border-bottom: 1px solid #26354c;
+  }
+
+  #game .game-top > div:first-child .eyebrow {
+    display: none !important;
+  }
+
+  #game .game-top h2 {
+    font-size: 22px !important;
+    margin: 0 !important;
+  }
+
+  #game .match-clock {
+    margin-left: auto !important;
+    padding: 3px 8px !important;
+  }
+
+  #game .match-clock small {
+    font-size: 6px !important;
+  }
+
+  #game .match-clock strong {
+    font-size: 16px !important;
+    margin-top: 1px !important;
+  }
+
+  #game .pause-button {
+    padding: 7px 9px !important;
+    font-size: 8px !important;
+  }
+
+  #game .live-badge {
+    display: none !important;
+  }
+
+  /* Arena fills all remaining space */
+  #game .game-layout {
+    display: block !important;
+    position: relative !important;
+    flex: 1 1 auto !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+  }
+
+  #game .arena-wrap {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    border: 0 !important;
+    margin: 0 !important;
+  }
+
+  #game #arena {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    max-height: none !important;
+  }
+
+  #game .sidebar,
+  #game .arena-caption {
+    display: none !important;
+  }
+
+  /* Touch controls overlay the bottom of the arena */
+  #game .mobile-controls {
+    position: fixed !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: env(safe-area-inset-bottom, 4px) !important;
+    width: 100% !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 4px 12px !important;
+    gap: 8px !important;
+    z-index: 110 !important;
+    pointer-events: none !important;
+  }
+
+  #game .mobile-controls > * {
+    pointer-events: auto !important;
+  }
+
+  #game .touch-stick-wrap {
+    gap: 3px !important;
+  }
+
+  #game .stick-label {
+    font-size: 8px !important;
+  }
+
+  #game .touch-stick {
+    width: clamp(68px, 14vh, 94px) !important;
+    height: clamp(68px, 14vh, 94px) !important;
+  }
+
+  #game .mobile-action {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 5px !important;
+  }
+
+  #game .fire-button {
+    width: 58px !important;
+    height: 58px !important;
+    font-size: 9px !important;
+  }
+
+  #game .shield-button {
+    height: 42px !important;
+    font-size: 8px !important;
+  }
+
+  /* Keep result and pause overlays visible */
+  #game .game-overlay {
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 120 !important;
+  }
+
+  #game:has(#gameOverlay:not(.hidden)) .mobile-controls {
+    display: none !important;
+  }
+}
+
+/* Ask mobile players to rotate their phone */
+@media screen and (max-width: 760px) and (orientation: portrait) {
+  #game:not(.hidden)::before {
+    content: "ROTATE YOUR PHONE\A Turn your device sideways to play NEON STRIKE.";
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: grid;
+    place-content: center;
+    padding: 25px;
+    text-align: center;
+    white-space: pre-line;
+    line-height: 2;
+    font: 700 18px 'DM Mono', monospace;
+    color: #63f4ff;
+    background: #060914;
+  }
+}
+
