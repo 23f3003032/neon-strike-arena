@@ -620,3 +620,111 @@ button, input { touch-action: manipulation; }
     display: none !important;
   }
 }
+
+/* FINAL MOBILE LANDSCAPE CONTROL POSITION */
+@media screen and (max-width: 1024px) and (orientation: landscape) {
+
+  #game:not(.hidden) {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    max-width: none !important;
+    max-height: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    display: flex !important;
+    flex-direction: column !important;
+    z-index: 999 !important;
+  }
+
+  #game .game-top {
+    flex: 0 0 38px !important;
+    height: 38px !important;
+    min-height: 38px !important;
+    margin: 0 !important;
+    padding: 3px 8px !important;
+  }
+
+  #game .game-layout {
+    position: relative !important;
+    display: block !important;
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+    width: 100% !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+  }
+
+  #game .arena-wrap {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  #game #arena {
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  #game .sidebar,
+  #game .arena-caption {
+    display: none !important;
+  }
+
+  #game .mobile-controls {
+    position: fixed !important;
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: max(env(safe-area-inset-bottom), 6px) !important;
+    width: 100% !important;
+    height: 100px !important;
+    margin: 0 !important;
+    padding: 5px 14px !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    z-index: 1000 !important;
+    pointer-events: none !important;
+  }
+
+  #game .mobile-controls > * {
+    pointer-events: auto !important;
+  }
+
+  #game .touch-stick {
+    width: 76px !important;
+    height: 76px !important;
+  }
+
+  #game .mobile-action {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 5px !important;
+  }
+
+  #game .fire-button {
+    width: 60px !important;
+    height: 60px !important;
+  }
+
+  #game .shield-button {
+    height: 38px !important;
+  }
+
+  #game .game-overlay:not(.hidden) {
+    z-index: 1100 !important;
+  }
+
+  #game:has(#gameOverlay:not(.hidden)) .mobile-controls {
+    display: none !important;
+  }
+}
