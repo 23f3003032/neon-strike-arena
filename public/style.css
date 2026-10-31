@@ -535,3 +535,88 @@ button, input { touch-action: manipulation; }
     display: none !important;
   }
 }
+
+/* NEON STRIKE - Mobile controls always visible */
+@media screen and (max-width: 1024px) and (orientation: landscape) {
+  #game:not(.hidden) {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+    display: flex !important;
+    flex-direction: column !important;
+    z-index: 100 !important;
+  }
+
+  #game .game-top {
+    flex: 0 0 42px !important;
+    height: 42px !important;
+    padding: 3px 10px !important;
+  }
+
+  #game .game-layout {
+    position: relative !important;
+    flex: 1 !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+    display: block !important;
+  }
+
+  #game .arena-wrap {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  #game #arena {
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  #game .sidebar,
+  #game .arena-caption {
+    display: none !important;
+  }
+
+  #game .mobile-controls {
+    position: fixed !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 8px !important;
+    width: 100% !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 5px 12px !important;
+    z-index: 500 !important;
+    pointer-events: none !important;
+  }
+
+  #game .mobile-controls > * {
+    pointer-events: auto !important;
+  }
+
+  #game .touch-stick {
+    width: 76px !important;
+    height: 76px !important;
+  }
+
+  #game .fire-button {
+    width: 62px !important;
+    height: 62px !important;
+  }
+
+  #game .mobile-action {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  #game .game-overlay:not(.hidden) ~ .mobile-controls {
+    display: none !important;
+  }
+}
